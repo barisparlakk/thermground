@@ -1,0 +1,41 @@
+# Local-only tooling (never commit)
+CLAUDE.md
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Virtual envs
+.venv/
+venv/
+
+# Data (repo root only; src/thermground/data/ is source code)
+/data/
+
+# Model weights and training artifacts
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+*.gguf
+*.npz
+*.onnx
+checkpoints/
+wandb/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
