@@ -1,0 +1,36 @@
+[project]
+name = "thermground"
+version = "0.1.0"
+description = "Small vision-language model for grounded question answering on thermal UAV images."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy",
+    "pillow",
+    "pyyaml",
+]
+
+# Added once models are introduced:
+# [project.optional-dependencies]
+# mlx = ["mlx; sys_platform == 'darwin'", "mlx-vlm; sys_platform == 'darwin'"]
+# train = ["torch", "transformers", "peft", "accelerate"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/thermground"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
