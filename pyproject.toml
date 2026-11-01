@@ -10,8 +10,9 @@ dependencies = [
     "pyyaml",
 ]
 
+[project.optional-dependencies]
+viz = ["matplotlib"]
 # Added once models are introduced:
-# [project.optional-dependencies]
 # mlx = ["mlx; sys_platform == 'darwin'", "mlx-vlm; sys_platform == 'darwin'"]
 # train = ["torch", "transformers", "peft", "accelerate"]
 
