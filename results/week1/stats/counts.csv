@@ -1,0 +1,5 @@
+split,images,Person,Car,Bicycle,OtherVehicle,DontCare
+train,2029,8533,5253,3630,102,110
+val,290,1168,719,554,12,7
+test,579,2611,1339,796,34,31
+total,2898,12312,7311,4980,148,148
