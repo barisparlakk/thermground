@@ -1,0 +1,212 @@
+{
+  "config": "configs/qa/hituav_qa_v1.yaml",
+  "seed": 0,
+  "split_file": "configs/splits/hituav_grouped_v1.yaml",
+  "prior_baselines_test": {
+    "presence": {
+      "chance": 0.5,
+      "majority": 0.5,
+      "question": 0.5
+    },
+    "count": {
+      "chance": 0.1667,
+      "majority": 0.1667,
+      "question": 0.1667
+    },
+    "region": {
+      "chance": 0.5,
+      "majority": 0.5,
+      "question": 0.5
+    }
+  },
+  "splits": {
+    "train": {
+      "items": 9885,
+      "images": 1898,
+      "presence": {
+        "items": 1856,
+        "answers": {
+          "no": 928,
+          "yes": 928
+        },
+        "classes": {
+          "Person": 1300,
+          "Car": 278,
+          "Bicycle": 278
+        }
+      },
+      "count": {
+        "items": 696,
+        "answers": {
+          "0": 116,
+          "1": 116,
+          "2": 116,
+          "3": 116,
+          "4-6": 116,
+          "7+": 116
+        }
+      },
+      "region": {
+        "items": 6258,
+        "answers": {
+          "no": 3129,
+          "yes": 3129
+        }
+      },
+      "point": {
+        "items": 1075,
+        "answers": {
+          "boxes": 806,
+          "none": 269
+        },
+        "mean_boxes": 4.24
+      },
+      "templates": {
+        "count_01": 182,
+        "count_02": 157,
+        "count_03": 180,
+        "count_04": 177,
+        "point_01": 276,
+        "point_02": 272,
+        "point_03": 255,
+        "point_04": 272,
+        "presence_01": 474,
+        "presence_02": 492,
+        "presence_03": 458,
+        "presence_04": 432,
+        "region_01": 1544,
+        "region_02": 1508,
+        "region_03": 1634,
+        "region_04": 1572
+      }
+    },
+    "val": {
+      "items": 1837,
+      "images": 347,
+      "presence": {
+        "items": 148,
+        "answers": {
+          "no": 74,
+          "yes": 74
+        },
+        "classes": {
+          "Person": 104,
+          "Car": 22,
+          "Bicycle": 22
+        }
+      },
+      "count": {
+        "items": 132,
+        "answers": {
+          "0": 22,
+          "1": 22,
+          "2": 22,
+          "3": 22,
+          "4-6": 22,
+          "7+": 22
+        }
+      },
+      "region": {
+        "items": 1238,
+        "answers": {
+          "no": 619,
+          "yes": 619
+        }
+      },
+      "point": {
+        "items": 319,
+        "answers": {
+          "boxes": 239,
+          "none": 80
+        },
+        "mean_boxes": 5.01
+      },
+      "templates": {
+        "count_01": 39,
+        "count_02": 26,
+        "count_03": 35,
+        "count_04": 32,
+        "point_01": 79,
+        "point_02": 69,
+        "point_03": 75,
+        "point_04": 96,
+        "presence_01": 30,
+        "presence_02": 34,
+        "presence_03": 40,
+        "presence_04": 44,
+        "region_01": 336,
+        "region_02": 324,
+        "region_03": 294,
+        "region_04": 284
+      }
+    },
+    "test": {
+      "items": 2442,
+      "images": 536,
+      "presence": {
+        "items": 416,
+        "answers": {
+          "no": 208,
+          "yes": 208
+        },
+        "classes": {
+          "Person": 292,
+          "Car": 62,
+          "Bicycle": 62
+        }
+      },
+      "count": {
+        "items": 162,
+        "answers": {
+          "0": 27,
+          "1": 27,
+          "2": 27,
+          "3": 27,
+          "4-6": 27,
+          "7+": 27
+        }
+      },
+      "region": {
+        "items": 1588,
+        "answers": {
+          "no": 794,
+          "yes": 794
+        }
+      },
+      "point": {
+        "items": 276,
+        "answers": {
+          "boxes": 207,
+          "none": 69
+        },
+        "mean_boxes": 4.28
+      },
+      "templates": {
+        "count_01": 28,
+        "count_02": 24,
+        "count_03": 32,
+        "count_04": 24,
+        "count_05": 28,
+        "count_06": 26,
+        "point_01": 44,
+        "point_02": 54,
+        "point_03": 45,
+        "point_04": 49,
+        "point_05": 42,
+        "point_06": 42,
+        "presence_01": 74,
+        "presence_02": 58,
+        "presence_03": 78,
+        "presence_04": 96,
+        "presence_05": 56,
+        "presence_06": 54,
+        "region_01": 234,
+        "region_02": 316,
+        "region_03": 248,
+        "region_04": 240,
+        "region_05": 278,
+        "region_06": 272
+      }
+    }
+  }
+}
