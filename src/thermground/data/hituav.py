@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
+import yaml
 from PIL import Image
 
 CLASSES = ("Person", "Car", "Bicycle", "OtherVehicle", "DontCare")
@@ -86,12 +87,20 @@ class HitUav:
         data_dir: str | Path = "data/hituav",
         split: str = "train",
         drop_dontcare: bool = False,
+        split_file: str | Path | None = None,
     ) -> None:
+        """split_file: YAML with train/val/test name lists; None uses the provided split."""
         if split not in SPLITS:
             raise ValueError(f"split must be one of {SPLITS}, got {split!r}")
         self.root = find_root(data_dir) / "normal_xml"
         self.split = split
-        self.names = (self.root / "ImageSets" / "Main" / f"{split}.txt").read_text().split()
+        if split_file is None:
+            self.names = (self.root / "ImageSets" / "Main" / f"{split}.txt").read_text().split()
+        else:
+            self.names = list(yaml.safe_load(Path(split_file).read_text())[split])
+            # Unquoted names like 1_130_90_0_04077 parse as YAML integers.
+            if not all(isinstance(n, str) for n in self.names):
+                raise ValueError(f"{split_file}: image names must be quoted strings")
         self._ann = [_parse_xml(self.root / "Annotations" / f"{n}.xml") for n in self.names]
         if drop_dontcare:
             self._ann = [
