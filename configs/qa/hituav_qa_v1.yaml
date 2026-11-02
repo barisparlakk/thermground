@@ -1,0 +1,59 @@
+# HIT-UAV QA v1. Used by scripts/make_hituav_qa.py; see docs/qa_design.md.
+seed: 0
+split_file: configs/splits/hituav_grouped_v1.yaml
+out_dir: data/qa/hituav_qa_v1
+
+presence:
+  classes: {Person: 0.7, Car: 0.15, Bicycle: 0.15}  # share of presence questions per class
+count:
+  buckets: ["0", "1", "2", "3", "4-6", "7+"]
+point:
+  max_boxes: 10        # skip crowds larger than this
+  negative_share: 0.25 # share of "none" items
+
+objects:  # [singular, plural]
+  Person: [person, people]
+  Car: [car, cars]
+  Bicycle: [bicycle, bicycles]
+
+region_phrases:
+  top-left: top-left part
+  top: top part
+  top-right: top-right part
+  left: left part
+  center: center
+  right: right part
+  bottom-left: bottom-left part
+  bottom: bottom part
+  bottom-right: bottom-right part
+
+# held_out templates appear only in test, to check robustness to unseen wording.
+templates:
+  presence:
+    - {id: presence_01, text: "Is there a {object} in this image?"}
+    - {id: presence_02, text: "Can you see any {objects} in this thermal image?"}
+    - {id: presence_03, text: "Does this image contain a {object}?"}
+    - {id: presence_04, text: "Are there any {objects} visible?"}
+    - {id: presence_05, text: "Is a {object} visible anywhere in the scene?", held_out: true}
+    - {id: presence_06, text: "Do you detect any {objects} here?", held_out: true}
+  count:
+    - {id: count_01, text: "How many people are in this image?"}
+    - {id: count_02, text: "How many people can you see?"}
+    - {id: count_03, text: "Count the people in this thermal image."}
+    - {id: count_04, text: "What is the number of people visible?"}
+    - {id: count_05, text: "How many persons appear in the scene?", held_out: true}
+    - {id: count_06, text: "How many people does this image show?", held_out: true}
+  region:
+    - {id: region_01, text: "Is there a person in the {region} of the image?"}
+    - {id: region_02, text: "Can you see anyone in the {region} of this thermal image?"}
+    - {id: region_03, text: "Does the {region} of the image contain a person?"}
+    - {id: region_04, text: "Is anybody visible in the {region} of the image?"}
+    - {id: region_05, text: "Is a person present in the {region} of the scene?", held_out: true}
+    - {id: region_06, text: "Do you see a human in the {region} of this image?", held_out: true}
+  point:
+    - {id: point_01, text: "Mark every person in the image."}
+    - {id: point_02, text: "Draw a box around each person."}
+    - {id: point_03, text: "Locate all people in this thermal image."}
+    - {id: point_04, text: "Find and outline each person in the scene."}
+    - {id: point_05, text: "Show where every person is.", held_out: true}
+    - {id: point_06, text: "Give bounding boxes for all people visible.", held_out: true}
