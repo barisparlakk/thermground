@@ -39,3 +39,6 @@ wandb/
 
 # macOS
 .DS_Store
+
+# Evaluation predictions (large, regenerable)
+results/**/predictions_*.jsonl
