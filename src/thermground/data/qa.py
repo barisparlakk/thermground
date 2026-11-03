@@ -171,6 +171,8 @@ def presence(
                 Draft(s, "presence", answer, target_class=name, evidence=_as_lists(boxes))
             )
         pairs[name] = _pairs(drafts, _condition, rng)
+    if missing := [name for name in shares if not pairs[name]]:
+        raise ValueError(f"no yes/no presence pairs for {missing}; adjust presence.classes")
     # keep the class mix at the configured shares, limited by the scarcest class
     unit = min(len(pairs[name]) / share for name, share in shares.items())
     out, start = [], 0
