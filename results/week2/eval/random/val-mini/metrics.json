@@ -1,0 +1,442 @@
+{
+  "model": "random",
+  "coord_format": "pixel",
+  "set": "val-mini",
+  "eval_config": "configs/eval/hituav_eval_v1.yaml",
+  "qa_config": "configs/qa/hituav_qa_v1.yaml",
+  "limit": null,
+  "items": 520,
+  "items_per_family": {
+    "presence": 120,
+    "count": 120,
+    "region": 200,
+    "point": 80
+  },
+  "item_ids_sha1": "34752b6eb61308801d0d3be364a65ca61d7696c0",
+  "seconds_per_item": {
+    "real": 0.0,
+    "blank": 0.0,
+    "shuffled": 0.0
+  },
+  "conditions": {
+    "blank": {
+      "count": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.1583,
+          "balanced_accuracy": 0.1583,
+          "within_one": 0.3833
+        },
+        "vs_shown": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.2333,
+          "balanced_accuracy": 0.2333,
+          "within_one": 0.2333
+        }
+      },
+      "point": {
+        "vs_original": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": 0.0069,
+          "recall": 0.0034,
+          "f1": 0.0046,
+          "none_accuracy": 0.0
+        },
+        "vs_shown": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": 0.0,
+          "recall": null,
+          "f1": null,
+          "none_accuracy": 0.0
+        }
+      },
+      "presence": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "yes_rate": 0.6333,
+          "pair_accuracy": 0.0
+        },
+        "vs_shown": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.3667,
+          "balanced_accuracy": 0.3667,
+          "yes_rate": 0.6333
+        }
+      },
+      "region": {
+        "vs_original": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "yes_rate": 0.41,
+          "pair_accuracy": 0.0
+        },
+        "vs_shown": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.59,
+          "balanced_accuracy": 0.59,
+          "yes_rate": 0.41
+        }
+      }
+    },
+    "real": {
+      "count": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.1,
+          "balanced_accuracy": 0.1,
+          "within_one": 0.3917
+        }
+      },
+      "point": {
+        "vs_original": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "none_accuracy": 0.1
+        }
+      },
+      "presence": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.4833,
+          "balanced_accuracy": 0.4833,
+          "yes_rate": 0.5,
+          "pair_accuracy": 0.2167
+        }
+      },
+      "region": {
+        "vs_original": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.525,
+          "balanced_accuracy": 0.525,
+          "yes_rate": 0.475,
+          "pair_accuracy": 0.33
+        }
+      }
+    },
+    "shuffled": {
+      "count": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.1833,
+          "balanced_accuracy": 0.1833,
+          "within_one": 0.4417
+        },
+        "vs_shown": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.2667,
+          "balanced_accuracy": 0.2776,
+          "within_one": 0.475
+        }
+      },
+      "point": {
+        "vs_original": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "none_accuracy": 0.4
+        },
+        "vs_shown": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "none_accuracy": 0.2692
+        }
+      },
+      "presence": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.4917,
+          "balanced_accuracy": 0.4917,
+          "yes_rate": 0.475,
+          "pair_accuracy": 0.2333
+        },
+        "vs_shown": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5077,
+          "yes_rate": 0.475
+        }
+      },
+      "region": {
+        "vs_original": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "yes_rate": 0.52,
+          "pair_accuracy": 0.25
+        },
+        "vs_shown": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.525,
+          "balanced_accuracy": 0.5426,
+          "yes_rate": 0.52
+        }
+      }
+    }
+  },
+  "headline": {
+    "count": {
+      "real": 0.1,
+      "invalid_real": 0.0,
+      "blank": 0.1583,
+      "absent_on_blank": 0.2333,
+      "grounding_gap": -0.0583,
+      "follows_shuffled": 0.2776
+    },
+    "point": {
+      "real": 0.0,
+      "invalid_real": 0.0,
+      "blank": 0.0046,
+      "absent_on_blank": 0.0,
+      "grounding_gap": -0.0046,
+      "follows_shuffled": 0.0
+    },
+    "presence": {
+      "real": 0.4833,
+      "invalid_real": 0.0,
+      "pair_accuracy_real": 0.2167,
+      "blank": 0.5,
+      "absent_on_blank": 0.3667,
+      "grounding_gap": -0.0167,
+      "follows_shuffled": 0.5077
+    },
+    "region": {
+      "real": 0.525,
+      "invalid_real": 0.0,
+      "pair_accuracy_real": 0.33,
+      "blank": 0.5,
+      "absent_on_blank": 0.59,
+      "grounding_gap": 0.025,
+      "follows_shuffled": 0.5426
+    }
+  },
+  "breakdown_real": {
+    "count": {
+      "altitude": {
+        "60": {
+          "n": 58,
+          "score": 0.0947
+        },
+        "70": {
+          "n": 8,
+          "score": 0.125
+        },
+        "80": {
+          "n": 4,
+          "score": 0.0
+        },
+        "90": {
+          "n": 6,
+          "score": 0.2
+        },
+        "100": {
+          "n": 8,
+          "score": 0.0
+        },
+        "110": {
+          "n": 10,
+          "score": 0.1458
+        },
+        "120": {
+          "n": 10,
+          "score": 0.0417
+        },
+        "130": {
+          "n": 16,
+          "score": 0.0476
+        }
+      },
+      "scenario": {
+        "day": {
+          "n": 28,
+          "score": 0.1737
+        },
+        "night": {
+          "n": 92,
+          "score": 0.0835
+        }
+      },
+      "wording": {
+        "seen": {
+          "n": 120,
+          "score": 0.1
+        }
+      }
+    },
+    "point": {
+      "altitude": {
+        "60": {
+          "n": 37,
+          "score": 0.0
+        },
+        "70": {
+          "n": 7,
+          "score": 0.0
+        },
+        "80": {
+          "n": 5,
+          "score": 0.0
+        },
+        "90": {
+          "n": 2,
+          "score": 0.0
+        },
+        "100": {
+          "n": 7,
+          "score": 0.0
+        },
+        "110": {
+          "n": 5,
+          "score": 0.0
+        },
+        "120": {
+          "n": 5,
+          "score": null
+        },
+        "130": {
+          "n": 12,
+          "score": 0.0
+        }
+      },
+      "scenario": {
+        "day": {
+          "n": 18,
+          "score": 0.0
+        },
+        "night": {
+          "n": 62,
+          "score": 0.0
+        }
+      },
+      "wording": {
+        "seen": {
+          "n": 80,
+          "score": 0.0
+        }
+      }
+    },
+    "presence": {
+      "altitude": {
+        "70": {
+          "n": 22,
+          "score": 0.4091
+        },
+        "80": {
+          "n": 2,
+          "score": 1.0
+        },
+        "100": {
+          "n": 20,
+          "score": 0.45
+        },
+        "110": {
+          "n": 12,
+          "score": 0.75
+        },
+        "120": {
+          "n": 2,
+          "score": 0.5
+        },
+        "130": {
+          "n": 62,
+          "score": 0.4516
+        }
+      },
+      "scenario": {
+        "day": {
+          "n": 38,
+          "score": 0.5526
+        },
+        "night": {
+          "n": 82,
+          "score": 0.4512
+        }
+      },
+      "wording": {
+        "seen": {
+          "n": 120,
+          "score": 0.4833
+        }
+      }
+    },
+    "region": {
+      "altitude": {
+        "60": {
+          "n": 98,
+          "score": 0.5206
+        },
+        "70": {
+          "n": 16,
+          "score": 0.7667
+        },
+        "80": {
+          "n": 16,
+          "score": 0.375
+        },
+        "90": {
+          "n": 9,
+          "score": 0.425
+        },
+        "100": {
+          "n": 2,
+          "score": 0.5
+        },
+        "110": {
+          "n": 15,
+          "score": 0.65
+        },
+        "120": {
+          "n": 3,
+          "score": 0.75
+        },
+        "130": {
+          "n": 41,
+          "score": 0.6508
+        }
+      },
+      "scenario": {
+        "day": {
+          "n": 8,
+          "score": 0.75
+        },
+        "night": {
+          "n": 192,
+          "score": 0.5157
+        }
+      },
+      "wording": {
+        "seen": {
+          "n": 200,
+          "score": 0.525
+        }
+      }
+    }
+  }
+}
