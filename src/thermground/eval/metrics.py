@@ -26,6 +26,14 @@ def _ratio(num: float, den: float) -> float | None:
     return round(num / den, 4) if den else None
 
 
+def _balanced(records: list[dict], key: str) -> float | None:
+    """Mean per-answer accuracy, so a constant answer scores chance even on skewed data."""
+    by_answer = defaultdict(list)
+    for r in records:
+        by_answer[r[key]["answer"]].append(r["pred"] == r[key]["answer"])
+    return _mean(_mean(v) for v in by_answer.values())
+
+
 def hits(pred: list[list[float]], gt: list[list[float]], enlarge: float = 0.25) -> int:
     """One-to-one matches: a prediction's centre must fall inside a GT box enlarged by
     `enlarge` (half on each side); each GT box is matched at most once, nearest first."""
@@ -52,6 +60,7 @@ def yes_no_scores(records: list[dict], key: str) -> dict:
         "n": len(records),
         "invalid": _ratio(len(records) - len(valid), len(records)),
         "accuracy": _mean(r["pred"] == r[key]["answer"] for r in records),
+        "balanced_accuracy": _balanced(records, key),
         "yes_rate": _mean(r["pred"] == "yes" for r in valid),
     }
     if key == "truth":
@@ -70,6 +79,7 @@ def count_scores(records: list[dict], key: str, buckets: list[str]) -> dict:
         "n": len(records),
         "invalid": _ratio(len(records) - len(valid), len(records)),
         "accuracy": _mean(r["pred"] == r[key]["answer"] for r in records),
+        "balanced_accuracy": _balanced(records, key),
         "within_one": _mean(
             r["pred"] is not None and abs(index[r["pred"]] - index[r[key]["answer"]]) <= 1
             for r in records
@@ -85,8 +95,8 @@ def point_scores(records: list[dict], key: str, enlarge: float) -> dict:
         n_pred += len(pred)
         n_gt += len(gt)
     precision, recall = _ratio(tp, n_pred), _ratio(tp, n_gt)
-    f1 = None
-    if precision is not None and recall is not None:
+    f1 = None  # undefined only when there is nothing to find
+    if n_gt:
         f1 = round(2 * precision * recall / (precision + recall), 4) if tp else 0.0
     empty = [r for r in records if not r[key]["evidence"]]
     return {
@@ -108,8 +118,8 @@ def family_scores(records: list[dict], family: str, key: str, buckets: list[str]
 
 
 def primary(scores: dict, family: str) -> float | None:
-    """Accuracy, or F1 for point."""
-    return scores["f1"] if family == "point" else scores["accuracy"]
+    """Balanced accuracy, or F1 for point."""
+    return scores["f1"] if family == "point" else scores["balanced_accuracy"]
 
 
 def absent(scores: dict, family: str) -> float | None:
