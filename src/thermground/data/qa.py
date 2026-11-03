@@ -134,6 +134,29 @@ def _balance(drafts: list[Draft], rng: np.random.Generator) -> list[Draft]:
     return [d for answer in sorted(groups) for d in _shuffled(groups[answer], rng)[:n]]
 
 
+def answer_for(
+    sample: Sample | None,
+    family: str,
+    target_class: str = "Person",
+    region: str | None = None,
+    buckets: list[str] | None = None,
+) -> tuple[str, list[list[float]]]:
+    """Answer and evidence for a question about `sample`; None stands for an empty image."""
+    if sample is None:
+        boxes = np.zeros((0, 4), dtype=np.float32)
+    else:
+        boxes = _boxes(sample, CLASSES.index(target_class))
+    if family == "region":
+        boxes = boxes[np.array([region_of(b) == region for b in boxes], dtype=bool)]
+    if family == "count":
+        answer = count_bucket(len(boxes), buckets)
+    elif family == "point":
+        answer = "boxes" if len(boxes) else "none"
+    else:
+        answer = "yes" if len(boxes) else "no"
+    return answer, _as_lists(boxes)
+
+
 def presence(
     samples: list[Sample], shares: dict[str, float], rng: np.random.Generator
 ) -> list[Draft]:
