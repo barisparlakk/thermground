@@ -1,0 +1,24 @@
+# Evaluation protocol v1. Used by scripts/evaluate.py; see docs/eval_protocol.md.
+qa_config: configs/qa/hituav_qa_v1.yaml
+seed: 0
+conditions: [real, blank, shuffled]
+blank_value: 128     # grey level of the blank image
+point_enlarge: 0.25  # GT boxes grow by 25% (12.5% per side) when testing point hits
+
+# Develop on val-mini, report weekly on test-mini, use the full test split only at the end.
+sets:
+  val-mini: {split: val, sizes: {presence: 120, count: 120, region: 200, point: 80}}
+  test-mini: {split: test, sizes: {presence: 120, count: 120, region: 200, point: 80}}
+  test: {split: test, sizes: null}
+
+# Appended to every question; {options} and {coords} are filled in per item and model.
+instructions:
+  presence: "Answer with yes or no."
+  region: "Answer with yes or no."
+  count: "Answer with one of: {options}."
+  point: "Give one bounding box [x1, y1, x2, y2] per person {coords}, or answer none."
+
+coords:
+  pixel: "in pixel coordinates of the 640x512 image"
+  norm1: "with coordinates between 0 and 1"
+  norm1000: "with coordinates between 0 and 1000"
