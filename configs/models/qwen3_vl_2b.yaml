@@ -1,0 +1,7 @@
+# Qwen3-VL 2B Instruct, 4-bit MLX conversion. Use with scripts/evaluate.py --model.
+name: qwen3_vl_2b
+backend: mlx_vlm
+model_id: mlx-community/Qwen3-VL-2B-Instruct-4bit
+revision: 9c4f5209e57b31f4b9dfba735de3fb983739c9cc
+coord_format: norm1000  # boxes as 0-1000 relative coordinates (not yet verified; check in the dev pass)
+max_tokens: {short: 24, point: 256}
