@@ -8,6 +8,7 @@ Usage:
     uv run python scripts/evaluate.py --model always_yes --set test-mini \\
         --out results/week2/eval/always_yes/test-mini
     uv run python scripts/evaluate.py --model random --set val-mini --limit 40   # quick check
+    uv run python scripts/evaluate.py --model configs/models/qwen3_vl_2b.yaml --set val-mini
 """
 
 from __future__ import annotations
@@ -20,7 +21,8 @@ import yaml
 
 from thermground.data.hituav import HitUav
 from thermground.eval.run import CONDITIONS, evaluate, load_items, select_subset
-from thermground.models.reference import REFERENCE_MODELS, reference_model
+from thermground.models.reference import REFERENCE_MODELS
+from thermground.models.registry import load_model
 
 
 def spread(items: list[dict], limit: int) -> list[dict]:
@@ -31,7 +33,11 @@ def spread(items: list[dict], limit: int) -> list[dict]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluate a model on HIT-UAV QA")
-    parser.add_argument("--model", required=True, help=f"one of {', '.join(REFERENCE_MODELS)}")
+    parser.add_argument(
+        "--model",
+        required=True,
+        help=f"a model config (configs/models/*.yaml) or one of {', '.join(REFERENCE_MODELS)}",
+    )
     parser.add_argument("--set", default="val-mini", help="val-mini, test-mini or test")
     parser.add_argument("--config", type=Path, default=Path("configs/eval/hituav_eval_v1.yaml"))
     parser.add_argument("--data-dir", type=Path, default=Path("data/hituav"))
@@ -61,12 +67,13 @@ def main() -> None:
         return ds[index[name]].image
 
     buckets = qa["count"]["buckets"]
-    if args.model not in REFERENCE_MODELS:
-        raise SystemExit(f"unknown model {args.model!r}; available: {', '.join(REFERENCE_MODELS)}")
-    model = reference_model(args.model, samples, load_image, buckets)
+    try:
+        model, model_cfg = load_model(args.model, samples, load_image, buckets)
+    except ValueError as e:
+        raise SystemExit(str(e)) from None
     held_out = {t["id"] for ts in qa["templates"].values() for t in ts if t.get("held_out")}
 
-    out = args.out or Path("results/eval") / args.model / args.set
+    out = args.out or Path("results/eval") / model.name / args.set
     evaluate(
         model,
         items,
@@ -86,6 +93,7 @@ def main() -> None:
             "eval_config": str(args.config),
             "qa_config": cfg["qa_config"],
             "limit": args.limit,
+            "model_config": model_cfg,
         },
     )
     print((out / "summary.md").read_text())
