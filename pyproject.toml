@@ -12,8 +12,8 @@ dependencies = [
 
 [project.optional-dependencies]
 viz = ["matplotlib"]
-# Added once models are introduced:
-# mlx = ["mlx; sys_platform == 'darwin'", "mlx-vlm; sys_platform == 'darwin'"]
+mlx = ["mlx-vlm>=0.7.12; sys_platform == 'darwin'"]  # Apple silicon inference only
+# Added once training starts:
 # train = ["torch", "transformers", "peft", "accelerate"]
 
 [dependency-groups]
