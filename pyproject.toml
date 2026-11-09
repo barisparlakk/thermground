@@ -13,8 +13,8 @@ dependencies = [
 [project.optional-dependencies]
 viz = ["matplotlib"]
 mlx = ["mlx-vlm>=0.7.12; sys_platform == 'darwin'"]  # Apple silicon inference only
-# Added once training starts:
-# train = ["torch", "transformers", "peft", "accelerate"]
+# LoRA fine-tuning and transformers inference (CUDA, e.g. Colab)
+train = ["torch>=2.5", "torchvision", "transformers>=4.57", "peft>=0.17"]
 
 [dependency-groups]
 dev = [
