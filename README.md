@@ -15,11 +15,9 @@ uv run pytest
 
 ### Colab (CUDA)
 
-```python
-!pip install -q uv
-!git clone <repo-url> thermground
-%cd thermground
-!uv pip install --system -e .
-```
+Training and transformers inference run on Colab with the `train` extra. Open
+`notebooks/colab_train.ipynb` on a GPU runtime and run it top to bottom: it clones the
+repository, installs `.[train,viz]`, downloads HIT-UAV, rebuilds the QA set and runs
+training and evaluation. See `docs/training.md`.
 
-Place datasets under `data/` (for example by mounting Google Drive and symlinking it); the directory is not tracked by git.
+Datasets live under `data/`, which is not tracked by git.
