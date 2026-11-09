@@ -1,0 +1,31 @@
+# LoRA v1 on Qwen3-VL-2B. Run with scripts/train_lora.py (CUDA, train extra).
+name: qwen3_vl_2b_lora_v1
+base: configs/models/qwen3_vl_2b_hf.yaml
+eval_config: configs/eval/hituav_eval_v1.yaml  # prompts are taken from here
+seed: 0
+
+data:
+  split: train
+  # Per-family resampling of the 9,885 train items (region dominates otherwise):
+  # presence 1,856 + region ~1,877 + count 1,392 + point 1,075 = ~6,200 examples.
+  mix: {presence: 1.0, region: 0.3, count: 2.0, point: 1.0}
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  # Language model only; the vision encoder stays frozen.
+  target_modules: '.*language_model.*\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)'
+
+optim:
+  lr: 1.0e-4
+  weight_decay: 0.0
+  warmup_ratio: 0.03
+  epochs: 1
+  batch_size: 4
+  grad_accum: 4        # effective batch 16, ~390 steps
+  max_grad_norm: 1.0
+
+gradient_checkpointing: true
+num_workers: 2
+log_every: 10
