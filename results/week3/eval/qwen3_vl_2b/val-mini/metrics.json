@@ -1,0 +1,454 @@
+{
+  "model": "qwen3_vl_2b",
+  "coord_format": "norm1000",
+  "set": "val-mini",
+  "eval_config": "configs/eval/hituav_eval_v1.yaml",
+  "qa_config": "configs/qa/hituav_qa_v1.yaml",
+  "limit": null,
+  "model_config": {
+    "config": "configs/models/qwen3_vl_2b.yaml",
+    "name": "qwen3_vl_2b",
+    "backend": "mlx_vlm",
+    "model_id": "mlx-community/Qwen3-VL-2B-Instruct-4bit",
+    "revision": "9c4f5209e57b31f4b9dfba735de3fb983739c9cc",
+    "coord_format": "norm1000",
+    "max_tokens": {
+      "short": 24,
+      "point": 512
+    }
+  },
+  "items": 520,
+  "items_per_family": {
+    "presence": 120,
+    "count": 120,
+    "region": 200,
+    "point": 80
+  },
+  "item_ids_sha1": "34752b6eb61308801d0d3be364a65ca61d7696c0",
+  "seconds_per_item": {
+    "real": 2.3293,
+    "blank": 1.8927,
+    "shuffled": 1.8974
+  },
+  "conditions": {
+    "blank": {
+      "count": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.1667,
+          "balanced_accuracy": 0.1667,
+          "within_one": 0.3333
+        },
+        "vs_shown": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "within_one": 1.0
+        }
+      },
+      "point": {
+        "vs_original": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "none_accuracy": 1.0
+        },
+        "vs_shown": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "none_accuracy": 1.0
+        }
+      },
+      "presence": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "yes_rate": 0.0,
+          "pair_accuracy": 0.0
+        },
+        "vs_shown": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "yes_rate": 0.0
+        }
+      },
+      "region": {
+        "vs_original": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "yes_rate": 0.0,
+          "pair_accuracy": 0.0
+        },
+        "vs_shown": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "yes_rate": 0.0
+        }
+      }
+    },
+    "real": {
+      "count": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.2333,
+          "balanced_accuracy": 0.2333,
+          "within_one": 0.4583
+        }
+      },
+      "point": {
+        "vs_original": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": 0.5762,
+          "recall": 0.3,
+          "f1": 0.3946,
+          "none_accuracy": 0.9
+        }
+      },
+      "presence": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.5917,
+          "balanced_accuracy": 0.5917,
+          "yes_rate": 0.1583,
+          "pair_accuracy": 0.2167
+        }
+      },
+      "region": {
+        "vs_original": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.66,
+          "balanced_accuracy": 0.66,
+          "yes_rate": 0.29,
+          "pair_accuracy": 0.38
+        }
+      }
+    },
+    "shuffled": {
+      "count": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.1583,
+          "balanced_accuracy": 0.1583,
+          "within_one": 0.4417
+        },
+        "vs_shown": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.25,
+          "balanced_accuracy": 0.2141,
+          "within_one": 0.4167
+        }
+      },
+      "point": {
+        "vs_original": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "none_accuracy": 0.6
+        },
+        "vs_shown": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": 0.5221,
+          "recall": 0.2185,
+          "f1": 0.3081,
+          "none_accuracy": 0.8846
+        }
+      },
+      "presence": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.4667,
+          "balanced_accuracy": 0.4667,
+          "yes_rate": 0.25,
+          "pair_accuracy": 0.1333
+        },
+        "vs_shown": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.5917,
+          "balanced_accuracy": 0.6766,
+          "yes_rate": 0.25
+        }
+      },
+      "region": {
+        "vs_original": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.52,
+          "balanced_accuracy": 0.52,
+          "yes_rate": 0.18,
+          "pair_accuracy": 0.15
+        },
+        "vs_shown": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.685,
+          "balanced_accuracy": 0.5514,
+          "yes_rate": 0.18
+        }
+      }
+    }
+  },
+  "headline": {
+    "count": {
+      "real": 0.2333,
+      "invalid_real": 0.0,
+      "blank": 0.1667,
+      "absent_on_blank": 1.0,
+      "grounding_gap": 0.0666,
+      "follows_shuffled": 0.2141
+    },
+    "point": {
+      "real": 0.3946,
+      "invalid_real": 0.0,
+      "blank": 0.0,
+      "absent_on_blank": 1.0,
+      "grounding_gap": 0.3946,
+      "follows_shuffled": 0.3081
+    },
+    "presence": {
+      "real": 0.5917,
+      "invalid_real": 0.0,
+      "pair_accuracy_real": 0.2167,
+      "blank": 0.5,
+      "absent_on_blank": 1.0,
+      "grounding_gap": 0.0917,
+      "follows_shuffled": 0.6766
+    },
+    "region": {
+      "real": 0.66,
+      "invalid_real": 0.0,
+      "pair_accuracy_real": 0.38,
+      "blank": 0.5,
+      "absent_on_blank": 1.0,
+      "grounding_gap": 0.16,
+      "follows_shuffled": 0.5514
+    }
+  },
+  "breakdown_real": {
+    "count": {
+      "altitude": {
+        "60": {
+          "n": 58,
+          "score": 0.1273
+        },
+        "70": {
+          "n": 8,
+          "score": 0.25
+        },
+        "80": {
+          "n": 4,
+          "score": 0.25
+        },
+        "90": {
+          "n": 6,
+          "score": 0.0
+        },
+        "100": {
+          "n": 8,
+          "score": 0.625
+        },
+        "110": {
+          "n": 10,
+          "score": 0.0625
+        },
+        "120": {
+          "n": 10,
+          "score": 0.2917
+        },
+        "130": {
+          "n": 16,
+          "score": 0.3333
+        }
+      },
+      "scenario": {
+        "day": {
+          "n": 28,
+          "score": 0.2288
+        },
+        "night": {
+          "n": 92,
+          "score": 0.2722
+        }
+      },
+      "wording": {
+        "seen": {
+          "n": 120,
+          "score": 0.2333
+        }
+      }
+    },
+    "point": {
+      "altitude": {
+        "60": {
+          "n": 37,
+          "score": 0.439
+        },
+        "70": {
+          "n": 7,
+          "score": 0.0
+        },
+        "80": {
+          "n": 5,
+          "score": 0.6301
+        },
+        "90": {
+          "n": 2,
+          "score": 0.0
+        },
+        "100": {
+          "n": 7,
+          "score": 0.4
+        },
+        "110": {
+          "n": 5,
+          "score": 0.0
+        },
+        "120": {
+          "n": 5,
+          "score": null
+        },
+        "130": {
+          "n": 12,
+          "score": 0.0
+        }
+      },
+      "scenario": {
+        "day": {
+          "n": 18,
+          "score": 0.1333
+        },
+        "night": {
+          "n": 62,
+          "score": 0.4037
+        }
+      },
+      "wording": {
+        "seen": {
+          "n": 80,
+          "score": 0.3946
+        }
+      }
+    },
+    "presence": {
+      "altitude": {
+        "70": {
+          "n": 22,
+          "score": 0.5909
+        },
+        "80": {
+          "n": 2,
+          "score": 0.5
+        },
+        "100": {
+          "n": 20,
+          "score": 0.6
+        },
+        "110": {
+          "n": 12,
+          "score": 0.4167
+        },
+        "120": {
+          "n": 2,
+          "score": 0.5
+        },
+        "130": {
+          "n": 62,
+          "score": 0.629
+        }
+      },
+      "scenario": {
+        "day": {
+          "n": 38,
+          "score": 0.5263
+        },
+        "night": {
+          "n": 82,
+          "score": 0.622
+        }
+      },
+      "wording": {
+        "seen": {
+          "n": 120,
+          "score": 0.5917
+        }
+      }
+    },
+    "region": {
+      "altitude": {
+        "60": {
+          "n": 98,
+          "score": 0.6756
+        },
+        "70": {
+          "n": 16,
+          "score": 0.4334
+        },
+        "80": {
+          "n": 16,
+          "score": 0.5
+        },
+        "90": {
+          "n": 9,
+          "score": 0.875
+        },
+        "100": {
+          "n": 2,
+          "score": 1.0
+        },
+        "110": {
+          "n": 15,
+          "score": 0.5
+        },
+        "120": {
+          "n": 3,
+          "score": 1.0
+        },
+        "130": {
+          "n": 41,
+          "score": 0.6739
+        }
+      },
+      "scenario": {
+        "day": {
+          "n": 8,
+          "score": 0.875
+        },
+        "night": {
+          "n": 192,
+          "score": 0.6511
+        }
+      },
+      "wording": {
+        "seen": {
+          "n": 200,
+          "score": 0.66
+        }
+      }
+    }
+  }
+}
