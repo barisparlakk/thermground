@@ -1,0 +1,454 @@
+{
+  "model": "qwen3_vl_4b",
+  "coord_format": "norm1000",
+  "set": "val-mini",
+  "eval_config": "configs/eval/hituav_eval_v1.yaml",
+  "qa_config": "configs/qa/hituav_qa_v1.yaml",
+  "limit": null,
+  "model_config": {
+    "config": "configs/models/qwen3_vl_4b.yaml",
+    "name": "qwen3_vl_4b",
+    "backend": "mlx_vlm",
+    "model_id": "mlx-community/Qwen3-VL-4B-Instruct-4bit",
+    "revision": "2fd8dacbdb8f1e54b8c005f081ec5bf79c56376b",
+    "coord_format": "norm1000",
+    "max_tokens": {
+      "short": 24,
+      "point": 512
+    }
+  },
+  "items": 520,
+  "items_per_family": {
+    "presence": 120,
+    "count": 120,
+    "region": 200,
+    "point": 80
+  },
+  "item_ids_sha1": "34752b6eb61308801d0d3be364a65ca61d7696c0",
+  "seconds_per_item": {
+    "real": 2.8445,
+    "blank": 2.8064,
+    "shuffled": 3.0087
+  },
+  "conditions": {
+    "blank": {
+      "count": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.1667,
+          "balanced_accuracy": 0.1667,
+          "within_one": 0.3333
+        },
+        "vs_shown": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "within_one": 1.0
+        }
+      },
+      "point": {
+        "vs_original": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "none_accuracy": 1.0
+        },
+        "vs_shown": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "none_accuracy": 1.0
+        }
+      },
+      "presence": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "yes_rate": 0.0,
+          "pair_accuracy": 0.0
+        },
+        "vs_shown": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "yes_rate": 0.0
+        }
+      },
+      "region": {
+        "vs_original": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.5,
+          "yes_rate": 0.0,
+          "pair_accuracy": 0.0
+        },
+        "vs_shown": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "yes_rate": 0.0
+        }
+      }
+    },
+    "real": {
+      "count": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.3083,
+          "balanced_accuracy": 0.3083,
+          "within_one": 0.55
+        }
+      },
+      "point": {
+        "vs_original": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": 0.6149,
+          "recall": 0.369,
+          "f1": 0.4612,
+          "none_accuracy": 0.75
+        }
+      },
+      "presence": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.6833,
+          "balanced_accuracy": 0.6833,
+          "yes_rate": 0.25,
+          "pair_accuracy": 0.4
+        }
+      },
+      "region": {
+        "vs_original": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.715,
+          "balanced_accuracy": 0.715,
+          "yes_rate": 0.415,
+          "pair_accuracy": 0.49
+        }
+      }
+    },
+    "shuffled": {
+      "count": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.1833,
+          "balanced_accuracy": 0.1833,
+          "within_one": 0.45
+        },
+        "vs_shown": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.3083,
+          "balanced_accuracy": 0.2853,
+          "within_one": 0.5583
+        }
+      },
+      "point": {
+        "vs_original": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "none_accuracy": 0.5
+        },
+        "vs_shown": {
+          "n": 80,
+          "invalid": 0.0,
+          "precision": 0.4923,
+          "recall": 0.237,
+          "f1": 0.32,
+          "none_accuracy": 0.6923
+        }
+      },
+      "presence": {
+        "vs_original": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.5083,
+          "balanced_accuracy": 0.5084,
+          "yes_rate": 0.4583,
+          "pair_accuracy": 0.1833
+        },
+        "vs_shown": {
+          "n": 120,
+          "invalid": 0.0,
+          "accuracy": 0.8,
+          "balanced_accuracy": 0.839,
+          "yes_rate": 0.4583
+        }
+      },
+      "region": {
+        "vs_original": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.545,
+          "balanced_accuracy": 0.545,
+          "yes_rate": 0.245,
+          "pair_accuracy": 0.19
+        },
+        "vs_shown": {
+          "n": 200,
+          "invalid": 0.0,
+          "accuracy": 0.77,
+          "balanced_accuracy": 0.6947,
+          "yes_rate": 0.245
+        }
+      }
+    }
+  },
+  "headline": {
+    "count": {
+      "real": 0.3083,
+      "invalid_real": 0.0,
+      "blank": 0.1667,
+      "absent_on_blank": 1.0,
+      "grounding_gap": 0.1416,
+      "follows_shuffled": 0.2853
+    },
+    "point": {
+      "real": 0.4612,
+      "invalid_real": 0.0,
+      "blank": 0.0,
+      "absent_on_blank": 1.0,
+      "grounding_gap": 0.4612,
+      "follows_shuffled": 0.32
+    },
+    "presence": {
+      "real": 0.6833,
+      "invalid_real": 0.0,
+      "pair_accuracy_real": 0.4,
+      "blank": 0.5,
+      "absent_on_blank": 1.0,
+      "grounding_gap": 0.1833,
+      "follows_shuffled": 0.839
+    },
+    "region": {
+      "real": 0.715,
+      "invalid_real": 0.0,
+      "pair_accuracy_real": 0.49,
+      "blank": 0.5,
+      "absent_on_blank": 1.0,
+      "grounding_gap": 0.215,
+      "follows_shuffled": 0.6947
+    }
+  },
+  "breakdown_real": {
+    "count": {
+      "altitude": {
+        "60": {
+          "n": 58,
+          "score": 0.2955
+        },
+        "70": {
+          "n": 8,
+          "score": 0.25
+        },
+        "80": {
+          "n": 4,
+          "score": 0.25
+        },
+        "90": {
+          "n": 6,
+          "score": 0.0
+        },
+        "100": {
+          "n": 8,
+          "score": 0.625
+        },
+        "110": {
+          "n": 10,
+          "score": 0.25
+        },
+        "120": {
+          "n": 10,
+          "score": 0.3333
+        },
+        "130": {
+          "n": 16,
+          "score": 0.3333
+        }
+      },
+      "scenario": {
+        "day": {
+          "n": 28,
+          "score": 0.225
+        },
+        "night": {
+          "n": 92,
+          "score": 0.3517
+        }
+      },
+      "wording": {
+        "seen": {
+          "n": 120,
+          "score": 0.3083
+        }
+      }
+    },
+    "point": {
+      "altitude": {
+        "60": {
+          "n": 37,
+          "score": 0.5921
+        },
+        "70": {
+          "n": 7,
+          "score": 0.0
+        },
+        "80": {
+          "n": 5,
+          "score": 0.5974
+        },
+        "90": {
+          "n": 2,
+          "score": 0.1818
+        },
+        "100": {
+          "n": 7,
+          "score": 0.3333
+        },
+        "110": {
+          "n": 5,
+          "score": 0.0
+        },
+        "120": {
+          "n": 5,
+          "score": null
+        },
+        "130": {
+          "n": 12,
+          "score": 0.0
+        }
+      },
+      "scenario": {
+        "day": {
+          "n": 18,
+          "score": 0.2222
+        },
+        "night": {
+          "n": 62,
+          "score": 0.4708
+        }
+      },
+      "wording": {
+        "seen": {
+          "n": 80,
+          "score": 0.4612
+        }
+      }
+    },
+    "presence": {
+      "altitude": {
+        "70": {
+          "n": 22,
+          "score": 0.6363
+        },
+        "80": {
+          "n": 2,
+          "score": 1.0
+        },
+        "100": {
+          "n": 20,
+          "score": 0.6
+        },
+        "110": {
+          "n": 12,
+          "score": 0.4167
+        },
+        "120": {
+          "n": 2,
+          "score": 0.5
+        },
+        "130": {
+          "n": 62,
+          "score": 0.7742
+        }
+      },
+      "scenario": {
+        "day": {
+          "n": 38,
+          "score": 0.5526
+        },
+        "night": {
+          "n": 82,
+          "score": 0.7439
+        }
+      },
+      "wording": {
+        "seen": {
+          "n": 120,
+          "score": 0.6833
+        }
+      }
+    },
+    "region": {
+      "altitude": {
+        "60": {
+          "n": 98,
+          "score": 0.7192
+        },
+        "70": {
+          "n": 16,
+          "score": 0.3666
+        },
+        "80": {
+          "n": 16,
+          "score": 0.75
+        },
+        "90": {
+          "n": 9,
+          "score": 0.875
+        },
+        "100": {
+          "n": 2,
+          "score": 1.0
+        },
+        "110": {
+          "n": 15,
+          "score": 0.35
+        },
+        "120": {
+          "n": 3,
+          "score": 1.0
+        },
+        "130": {
+          "n": 41,
+          "score": 0.7155
+        }
+      },
+      "scenario": {
+        "day": {
+          "n": 8,
+          "score": 0.875
+        },
+        "night": {
+          "n": 192,
+          "score": 0.7084
+        }
+      },
+      "wording": {
+        "seen": {
+          "n": 200,
+          "score": 0.715
+        }
+      }
+    }
+  }
+}
