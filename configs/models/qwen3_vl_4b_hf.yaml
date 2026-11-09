@@ -1,0 +1,8 @@
+# Qwen3-VL 4B Instruct, bf16, run with transformers (train extra, CUDA). Use with scripts/evaluate.py --model.
+name: qwen3_vl_4b_hf
+backend: hf  # transformers on CUDA; also the base model for LoRA fine-tuning
+model_id: Qwen/Qwen3-VL-4B-Instruct
+revision: ebb281ec70b05090aa6165b016eac8ec08e71b17
+dtype: bfloat16
+coord_format: norm1000  # same box format as the MLX build
+max_tokens: {short: 24, point: 512}

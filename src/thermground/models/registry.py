@@ -37,4 +37,17 @@ def load_model(
             cfg.get("revision"),
         )
         return model, {"config": str(path), **cfg}
+    if cfg["backend"] == "hf":
+        from thermground.models.hf_vlm import HFVLM
+
+        model = HFVLM(
+            cfg["name"],
+            cfg["model_id"],
+            cfg["coord_format"],
+            cfg["max_tokens"],
+            cfg.get("revision"),
+            adapter=cfg.get("adapter"),
+            dtype=cfg.get("dtype", "bfloat16"),
+        )
+        return model, {"config": str(path), **cfg}
     raise ValueError(f"unknown backend {cfg['backend']!r} in {path}")

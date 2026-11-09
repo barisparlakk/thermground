@@ -1,5 +1,6 @@
 """Model adapter and registry tests; mlx-vlm is replaced by a fake, so nothing is downloaded."""
 
+import contextlib
 import sys
 import types
 from types import SimpleNamespace
@@ -8,6 +9,7 @@ import numpy as np
 import pytest
 import yaml
 
+from thermground.device import get_device
 from thermground.models.base import Query
 from thermground.models.registry import load_model
 
@@ -86,3 +88,62 @@ def test_registry_reference_and_errors(tmp_path):
         load_model("not_a_model", {}, lambda n: None, [])
     with pytest.raises(ValueError, match="unknown backend"):
         load_model(str(write_config(tmp_path, backend="nope")), {}, lambda n: None, [])
+
+
+def fake_torch(cuda=False, mps=False):
+    torch = types.ModuleType("torch")
+    torch.cuda = SimpleNamespace(is_available=lambda: cuda)
+    torch.backends = SimpleNamespace(mps=SimpleNamespace(is_available=lambda: mps))
+    torch.inference_mode = contextlib.nullcontext
+    return torch
+
+
+@pytest.mark.parametrize(
+    "cuda, mps, expected", [(True, True, "cuda"), (False, True, "mps"), (False, False, "cpu")]
+)
+def test_get_device(monkeypatch, cuda, mps, expected):
+    monkeypatch.setitem(sys.modules, "torch", fake_torch(cuda, mps))
+    assert get_device() == expected
+    assert get_device("cpu") == "cpu"
+
+
+class FakeProcessor:
+    def apply_chat_template(self, chat, tokenize, add_generation_prompt):
+        assert chat[0]["content"][0] == {"type": "image"} and add_generation_prompt
+        return "<chat>" + chat[0]["content"][1]["text"]
+
+    def __call__(self, text, images, return_tensors):
+        self.seen = (text, images)
+        return SimpleNamespace(to=lambda device: {"input_ids": np.zeros((1, 3), dtype=int)})
+
+    def decode(self, ids, skip_special_tokens):
+        return " yes \n" if list(ids) == [7, 8] else "?"
+
+
+class FakeModel:
+    def to(self, device):
+        self.device = device
+        return self
+
+    def eval(self):
+        return self
+
+    def generate(self, input_ids, max_new_tokens, do_sample):
+        self.max_new_tokens = max_new_tokens
+        return np.array([[0, 0, 0, 7, 8]])
+
+
+def test_hf_adapter_call(monkeypatch, tmp_path):
+    from thermground.models import hf_vlm
+
+    monkeypatch.setitem(sys.modules, "torch", fake_torch())
+    processor, model = FakeProcessor(), FakeModel()
+    monkeypatch.setattr(hf_vlm, "load_base", lambda model_id, revision, dtype: (processor, model))
+    spec = write_config(tmp_path, backend="hf", dtype="bfloat16")
+    vlm, cfg = load_model(str(spec), {}, lambda n: None, [])
+    assert isinstance(vlm, hf_vlm.HFVLM) and cfg["backend"] == "hf" and model.device == "cpu"
+
+    assert vlm.answer(query("presence")) == "yes"
+    (text,), (image,) = processor.seen
+    assert text == "<chat>Is there a person?" and image.mode == "RGB"
+    assert model.max_new_tokens == 24
